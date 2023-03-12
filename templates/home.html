@@ -14,8 +14,8 @@
                  class="card-image">
             <p>@{{ g.user.username }}</p>
           </a>
-          <p>{{ g.user.location}}</p>
-          <p>{{ g.user.bio}}</p>
+          <p>{{ g.user.location or "" }}</p>
+          <p>{{ g.user.bio or ""}}</p>
           <ul class="user-stats nav nav-pills">
             <li class="stat">
               <p class="small">Messages</p>

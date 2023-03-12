@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if user.id == g.user.id %}
 <img id="warbler-hero"
      class="full-width"
      src="{{ user.header_image_url }}"
      alt="Header Image for {{ user.username }}"
      id="header-image">
+{% else %}
+<img id="warbler-hero"
+     class="full-width"
+     id="header-image">
+{% endif %}
 <img src="{{ user.image_url }}"
      alt="Image for {{ user.username }}"
      id="profile-avatar">
@@ -34,7 +39,6 @@
               </a>
             </h4>
           </li>
-
           <li class="stat">
             <p class="small">Followers</p>
             <h4>
@@ -45,15 +49,19 @@
           </li>
           <li class="stat">
             <p class="small">Likes</p>
-            <a href="/users/{{ user.id }}/likes"><h4>{{ user.messages_liked | length }}</h4></a>
+            <h4>
+              <a href="/users/{{ user.id }}/likes">
+                {{ user.messages_liked | length }}
+              </a>
+            </h4>
           </li>
 
           <li class="ms-auto">
             {% if g.user.id == user.id %}
-            <a href="/users/changepwd" class="btn btn-outline-secondary">
+            <a href="/users/changepwd" class="btn btn-outline-secondary ms-2">
               Change Password
             </a>
-            <a href="/users/profile" class="btn btn-outline-secondary">
+            <a href="/users/profile" class="btn btn-outline-secondary ms-2">
               Edit Profile
             </a>
             <form method="POST" action="/users/delete">
@@ -85,10 +93,10 @@
 <div class="row">
   <div class="col-sm-3">
     <h4 id="sidebar-username">@{{ user.username }}</h4>
-    <p>{{ user.bio }}</p>
+    <p>{{ user.bio or "" }}</p>
     <p class="user-location">
       <span class="bi bi-map"></span>
-      {{ user.location }}
+      {{ user.location or "N/A"}}
     </p>
   </div>
 

@@ -1,6 +1,5 @@
 "use strict";
 
-
 const $likesBtn = $(".heart-icon")
 const $newMessageLink = $("#new-message")
 const $submitMsgBtn = $("#create-msg")
@@ -28,22 +27,4 @@ async function alterLikeStatus(evt) {
 }
 
 
-// function displayFormInputs(form)
-
-// /** post add msg form */
-// async function postMsg(evt){
-//   evt.stopImmediatePropagation();
-//   console.log(evt)
-//   const $csrfToken = $(evt.target).find('#csrf_token');
-//   debugger
-//   // const text = $newMsgForm.val()
-//   // const resp = await axios.post("/messages/new", data={
-//   //   "csrf_token" : $csrfToken.val(),
-//   //   "text" :
-
-// }
-
-
 $likesBtn.on("click", alterLikeStatus)
-// $newMessageLink.on("click", newMsg)
-// $submitMsgBtn.on("submit", postMsg)

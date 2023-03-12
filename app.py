@@ -273,12 +273,10 @@ def change_pwd():
 
 
         if not User.authenticate(g.user.username, form.data.get("password")):
-            breakpoint()
             form.password.errors = ["Incorrect password"]
         else:
             password1 = form.New_password1.data
             password2 = form.New_password2.data
-            breakpoint()
             if not password1 == password2:
                 form.New_password2.errors = ["New passwords do not match."]
 
@@ -298,33 +296,14 @@ def likes_page(user_id):
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    liked_messages = [Message.query.get(like.id) for like in g.user.messages_liked]
+    if not user_id == g.user.id:
+        user = User.query.get_or_404(user_id)
+        liked_messages = [Message.query.get(like.id) for like in user.messages_liked]
+    else:
+        user = g.user
+        liked_messages = [Message.query.get(like.id) for like in g.user.messages_liked]
 
-    return render_template('users/liked-messages.html', messages = liked_messages, user=g.user)
-
-# @app.post('/users/<int:message_id>/like')
-# def changes_message_like_status (message_id):
-#     """ Likes/unlikes message from users liked-messages page
-#     and redirects to likes page """
-
-#     if not g.user:
-#         flash("Access unauthorized.", "danger")
-#         return redirect("/")
-
-#     like = Likes.query.get((message_id, g.user.id)) or None
-
-#     if like:
-#         db.session.delete(like)
-
-#     else:
-#         message = Message.query.get_or_404(message_id)
-#         g.user.messages_liked.append(message)
-
-#     db.session.commit()
-
-#     return redirect(f'/users/{ g.user.id }/likes')
-
-# need to determine where we are performing the operation
+    return render_template('users/detail.html', messages = liked_messages, user=user)
 
 @app.post('/users/delete')
 def delete_user():
