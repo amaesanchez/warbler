@@ -24,12 +24,10 @@ After installing nums_api delete the nums_api.egg-info/ directory
 
 `rm -rf nums_api.egg-info/`
 
-When you need to add dependencies to requirements.txt, don't include the
-nums_api package as a dependency. To ensure it's not added, update
-requirements.txt like this
-
-`pip3 freeze | grep -v github.com > requirements.txt`
-
 Run app
 
 `python3 -m flask run -p 5000`
+
+# To containerize app
+
+Follow instructions in docker-setup.md
