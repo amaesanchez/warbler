@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  warbler:
+    container_name: warbler
+    image: warbler
+    restart: 'always'
+    build: './app'
+    ports:
+      - '8000:5000'
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/warbler
+      - SECRET_KEY=s3cr3t
+      - FLASK_APP=warbler
+      - LIMITER_STORAGE_URI=memory://localhost:5000
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres:15-alpine
+    restart: 'always'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=warbler
+      - POSTGRES_PORT=5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./warbler_dump.sql:/docker-entrypoint-initdb.d/warbler_dump.sql
+
+volumes:
+  pgdata: {}

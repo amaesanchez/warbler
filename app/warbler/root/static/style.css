@@ -1,0 +1,7 @@
+/* ========================== Signup/Login */
+
+#user_form input.form-control {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+}
