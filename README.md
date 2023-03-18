@@ -1,26 +1,26 @@
-# warbler
+# Warbler
+Twitter clone - users can post/like messages and follow other users.
 
-Deployed on: https://sanchez-warbler.onrender.com
-
+Deployed on: https://sanchez-warbler.onrender.com  
 *Please be patient, render is slow to load.
 
-# To host locally
+# Local Setup
 
-Create virtual environment and activate:
+1. Create virtual environment and activate.
 
-`python3 -m venv venv`
+  `python3 -m venv venv`
 
-`source venv/bin/activate`
+  `source venv/bin/activate`
 
-Install dependencies and run app:
+2. Navigate to directory with `requirements.txt`. Install dependencies.
 
-`pip3 install -r requirements.txt`
+  `pip3 install -r requirements.txt`
 
-Install warbler app as a python package in the top level directory (app)
+3. Install warbler app as a python package in the top level directory (app)
 
-`pip3 install -e .`
+  `pip3 install -e .`
 
-After installing nums_api delete the nums_api.egg-info/ directory
+4. After installing nums_api delete the nums_api.egg-info/ directory
 
 `rm -rf nums_api.egg-info/`
 
