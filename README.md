@@ -2,6 +2,9 @@
 Twitter clone - users can post/like messages and follow other users.
 
 Deployed on: https://sanchez-warbler.onrender.com  
+** Guest Login
+Username: guest
+Password: password **  
 *Please be patient, render is slow to load.
 
 ## Local Setup
