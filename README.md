@@ -1,7 +1,7 @@
 # Warbler
 Twitter clone - users can post/like messages and follow other users.
 
-**Note: Please be patient, render is slow to load.**
+**Note: Please be patient, render is slow to load.**  
 Deployed on: https://sanchez-warbler.onrender.com  
 **Username: guest
 Password: password**  
